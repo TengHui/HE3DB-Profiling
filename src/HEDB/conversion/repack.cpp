@@ -2,6 +2,8 @@
 #include "HEDB/utils/utils.h"
 #include <algorithm>
 #include "HEDB/conversion/repack.h"
+#include "chrono"
+
 namespace HEDB
 {
     // std::vector<double> sin_coeff {-0.08105589007143076952, 0.00000000000000016223, -0.15541886507934937756, 0.00000000000000024884, -0.13376703618065691193, 
@@ -237,6 +239,21 @@ namespace HEDB
                     seal::CKKSEncoder &encoder, seal::GaloisKeys &galois_keys, seal::RelinKeys &relin_keys,
                     seal::Evaluator &evaluator, seal::SEALContext &context)
     {
+        // hth0.Add a Timer
+        using Clock = std::chrono::high_resolution_clock;
+        using Duration = std::chrono::duration<double, std::milli>;
+        auto total_start = Clock::now();
+        struct Timings {
+            double preprocess_time = 0;
+            double linear_transform_time = 0;
+            double add_b_time = 0;
+            double mod_reduction_time = 0;
+            double total_time = 0;
+        } timings;
+
+        // hth1.Preprocess Start Timing
+        auto preprocess_start = Clock::now();
+
         // 1. Preprocess LWE Matrix
         // TODO: check the p/2 and multiplier
         size_t num_lwe_ciphers = lwe_ciphers.size();
@@ -262,22 +279,54 @@ namespace HEDB
             b[i] = static_cast<int32_t>(lwe_ciphers[i][Lvl1::n]) * multiplier * rescale;
         }
 
+        timings.preprocess_time = std::chrono::duration_cast<Duration>(Clock::now() - preprocess_start).count();
+
+        // hth2.LinearTransform Start Timing
+        auto linear_transform_start = Clock::now();
+
         // 2. Linear Transform A * s
         LinearTranform(result, A, 1.0, eval_key, encoder, galois_keys, evaluator);
         evaluator.rescale_to_next_inplace(result);
         result.scale() = 1.0;
+
+        timings.linear_transform_time = std::chrono::duration_cast<Duration>(Clock::now() - linear_transform_start).count();
+
+        // hth3.Add b Start Timing
+        auto add_b_start = Clock::now();
+
         // 3. Perform A * s + b
         seal::Plaintext plain;
         plain.parms_id() = result.parms_id();
         seal::pack_encode_param_id(b, result.parms_id(), 1.0, plain, encoder);
         evaluator.add_plain_inplace(result, plain);
 
+        timings.add_b_time = std::chrono::duration_cast<Duration>(Clock::now() - add_b_start).count();
 
+        // hth4.HomMod Start Timing
+        auto mod_reduction_start = Clock::now();
 
         // // 4. Perform modular reduction
         result.scale() = scale * rescale;
         // std::cout << result.coeff_modulus_size() << std::endl;
         HomMod(result, scale * rescale, q0 * rescale, encoder, evaluator, relin_keys, context);
+
+        timings.mod_reduction_time = std::chrono::duration_cast<Duration>(Clock::now() - mod_reduction_start).count();
+
+        timings.total_time = std::chrono::duration_cast<Duration>(Clock::now() - total_start).count();
+
+        // hth5.Output
+        std::cout << "\n=== LWEsToRLWE Timing Statistics ===\n";
+        std::cout << "Preprocessing:     " << timings.preprocess_time << " ms (" 
+                  << (timings.preprocess_time/timings.total_time*100) << "%)\n";
+        std::cout << "Linear Transform:  " << timings.linear_transform_time << " ms ("
+                  << (timings.linear_transform_time/timings.total_time*100) << "%)\n";
+        std::cout << "Add b vector:     " << timings.add_b_time << " ms ("
+                  << (timings.add_b_time/timings.total_time*100) << "%)\n";
+        std::cout << "Mod Reduction:    " << timings.mod_reduction_time << " ms ("
+                  << (timings.mod_reduction_time/timings.total_time*100) << "%)\n";
+        std::cout << "------------------------\n";
+        std::cout << "Total Time:       " << timings.total_time << " ms (100%)\n";
+        std::cout << "===================================\n\n";
 
     }
 
@@ -285,6 +334,21 @@ namespace HEDB
                     seal::CKKSEncoder &encoder, seal::GaloisKeys &galois_keys, seal::RelinKeys &relin_keys,
                     seal::Evaluator &evaluator, seal::SEALContext &context)
     {
+        // hth0.Add a Timer
+        using Clock = std::chrono::high_resolution_clock;
+        using Duration = std::chrono::duration<double, std::milli>;
+        auto total_start = Clock::now();
+        struct Timings {
+            double preprocess_time = 0;
+            double linear_transform_time = 0;
+            double add_b_time = 0;
+            double mod_reduction_time = 0;
+            double total_time = 0;
+        } timings;
+
+        // hth1.Preprocess Start Timing
+        auto preprocess_start = Clock::now();
+
         // 1. Preprocess LWE Matrix
         // TODO: check the p/2 and multiplier
         size_t num_lwe_ciphers = lwe_ciphers.size();
@@ -310,22 +374,54 @@ namespace HEDB
             b[i] = static_cast<int64_t>(lwe_ciphers[i][Lvl2::n]) * multiplier;
         }
 
+        timings.preprocess_time = std::chrono::duration_cast<Duration>(Clock::now() - preprocess_start).count();
+
+        // hth2.LinearTransform Start Timing
+        auto linear_transform_start = Clock::now();
+
         // 2. Linear Transform A * s
         LinearTranform(result, A, 1.0, eval_key, encoder, galois_keys, evaluator);
         evaluator.rescale_to_next_inplace(result);
         result.scale() = 1.0;
+
+        timings.linear_transform_time = std::chrono::duration_cast<Duration>(Clock::now() - linear_transform_start).count();
+
+        // hth3.Add b Start Timing
+        auto add_b_start = Clock::now();
+
         // 3. Perform A * s + b
         seal::Plaintext plain;
         plain.parms_id() = result.parms_id();
         seal::pack_encode_param_id(b, result.parms_id(), 1.0, plain, encoder);
         evaluator.add_plain_inplace(result, plain);
 
+        timings.add_b_time = std::chrono::duration_cast<Duration>(Clock::now() - add_b_start).count();
 
+        // hth4.HomMod Start Timing
+        auto mod_reduction_start = Clock::now();
 
         // // 4. Perform modular reduction
         result.scale() = scale;
         // std::cout << result.coeff_modulus_size() << std::endl;
         HomMod(result, scale, q0, encoder, evaluator, relin_keys, context);
+
+        timings.mod_reduction_time = std::chrono::duration_cast<Duration>(Clock::now() - mod_reduction_start).count();
+
+        timings.total_time = std::chrono::duration_cast<Duration>(Clock::now() - total_start).count();
+
+        // hth5.Output
+        std::cout << "\n=== LWEsToRLWE Timing Statistics ===\n";
+        std::cout << "Preprocessing:     " << timings.preprocess_time << " ms (" 
+                  << (timings.preprocess_time/timings.total_time*100) << "%)\n";
+        std::cout << "Linear Transform:  " << timings.linear_transform_time << " ms ("
+                  << (timings.linear_transform_time/timings.total_time*100) << "%)\n";
+        std::cout << "Add b vector:     " << timings.add_b_time << " ms ("
+                  << (timings.add_b_time/timings.total_time*100) << "%)\n";
+        std::cout << "Mod Reduction:    " << timings.mod_reduction_time << " ms ("
+                  << (timings.mod_reduction_time/timings.total_time*100) << "%)\n";
+        std::cout << "------------------------\n";
+        std::cout << "Total Time:       " << timings.total_time << " ms (100%)\n";
+        std::cout << "===================================\n\n";
 
     }
 
