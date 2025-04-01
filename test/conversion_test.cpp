@@ -88,7 +88,7 @@ void repack_test(uint32_t scale_bits, size_t num_slots)
 int main()
 {
     for(uint32_t num_slots = (1 << 10); num_slots <= (1 << 16); num_slots <<= 1) {
-        printf("<<<<<<<<<<<<============ Num Slots: " << num_slots << " ============>>>>>>>>>>>>");
+        std::cout << "<<<<<<<<<<<<============ Num Slots: " << num_slots << " ============>>>>>>>>>>>>" << std::endl;
         repack_test(29, num_slots);
     }
 
