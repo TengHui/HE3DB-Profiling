@@ -110,9 +110,11 @@ void repack_test_64bit(uint32_t scale_bits, size_t num_slots)
     for (size_t i = 0; i < num_slots; i++)
     {
         slots[i] = message(engine);
-        tlwes[i] = TFHEpp::tlweSymInt64Encrypt<P>(
-            slots[i], Lvl2::α, std::pow(2., scale_bits), 
-            tfhepp_secret_key.key.get<P>());
+        tlwes[i] = TFHEpp::tlweSymIntEncrypt<P>(
+            slots[i], 
+            tfhepp_secret_key.key.get<P>(),
+            Lvl2::α,                        
+            std::pow(2., scale_bits));
     }
     std::cout << "TFHE++ 64-bit ciphertexts generated." << std::endl;
 
@@ -154,7 +156,7 @@ void repack_test_64bit(uint32_t scale_bits, size_t num_slots)
     auto start = std::chrono::high_resolution_clock::now();
     
     // Call 64-bit version of LWEsToRLWE
-    LWEsToRLWE(result, tlwes, pre_key, scale, std::pow(2., modq_bits), 
+    LWEsToRLWE(result, tlwes, pre_key, scale, std::pow(2., modq_bits),
              ckks_encoder, galois_keys, relin_keys, evaluator, context);
     
     auto end = std::chrono::high_resolution_clock::now();
