@@ -4,7 +4,7 @@
 
 using namespace HEDB;
 
-void repack_test_32bit(uint32_t scale_bits, size_t num_slots)
+void repack_test(uint32_t scale_bits, size_t num_slots)
 {
     std::cout << "Num slots: " << num_slots << std::endl;
     std::random_device seed_gen;
@@ -85,110 +85,9 @@ void repack_test_32bit(uint32_t scale_bits, size_t num_slots)
     
 }
 
-// hth.Add new test function for 64-bit LWE to RLWE conversion
-void repack_test_64bit(uint32_t scale_bits, size_t num_slots)
-{
-    std::cout << "=== 64-bit LWE to RLWE Conversion Test ===" << std::endl;
-    std::cout << "Num slots: " << num_slots << std::endl;
-    
-    // Initialize random generators
-    std::random_device seed_gen;
-    std::default_random_engine engine(seed_gen());
-    using P = Lvl2;  // Use Level 2 parameters for 64-bit
-    uint64_t modq_bits = 64;
-    uint64_t modulus_bits = 90;
-    
-    // Generate TFHE++ secret key
-    TFHESecretKey tfhepp_secret_key;
-    
-    // Generate random messages (0 or 1)
-    std::uniform_int_distribution<typename P::T> message(0, 1);
-    std::vector<uint64_t> slots(num_slots);
-    std::vector<TLWELvl2> tlwes(num_slots);
-    
-    // Encrypt messages using TFHE++
-    for (size_t i = 0; i < num_slots; i++)
-    {
-        slots[i] = message(engine);
-        tlwes[i] = TFHEpp::tlweSymIntEncrypt<P>(
-            slots[i], 
-            tfhepp_secret_key.key.get<P>(),
-            Lvl2::α,                        
-            std::pow(2., scale_bits));
-    }
-    std::cout << "TFHE++ 64-bit ciphertexts generated." << std::endl;
-
-    // Set up SEAL parameters for CKKS
-    seal::EncryptionParameters parms(seal::scheme_type::ckks);
-    size_t poly_modulus_degree = 131072;  // Larger polynomial degree for 64-bit
-    parms.set_poly_modulus_degree(poly_modulus_degree);
-    parms.set_coeff_modulus(seal::CoeffModulus::Create(
-        poly_modulus_degree, {90, 78, 78, 78, 78, 78, 78, 90, 90, 90, 90, 90}));
-    double scale = std::pow(2.0, scale_bits);
-
-    // Initialize SEAL context
-    seal::SEALContext context(parms, true, seal::sec_level_type::none);
-    
-    // Generate SEAL keys
-    seal::KeyGenerator keygen(context);
-    seal::SecretKey seal_secret_key = keygen.secret_key();
-    seal::RelinKeys relin_keys;
-    keygen.create_relin_keys(relin_keys);
-    seal::GaloisKeys galois_keys;
-    keygen.create_galois_keys(galois_keys);
-
-    // Initialize crypto components
-    seal::Encryptor encryptor(context, seal_secret_key);
-    seal::Evaluator evaluator(context);
-    seal::Decryptor decryptor(context, seal_secret_key);
-    seal::CKKSEncoder ckks_encoder(context);
-
-    std::cout << "SEAL parameters initialized for 64-bit." << std::endl;
-
-    // Generate conversion key
-    LTPreKey pre_key;
-    LWEsToRLWEKeyGen(pre_key, std::pow(2., modulus_bits), seal_secret_key, 
-                    tfhepp_secret_key, P::n, ckks_encoder, encryptor, context);
-    std::cout << "64-bit conversion key generated." << std::endl;
-
-    // Perform conversion
-    seal::Ciphertext result;
-    auto start = std::chrono::high_resolution_clock::now();
-    
-    // Call 64-bit version of LWEsToRLWE
-    LWEsToRLWE(result, tlwes, pre_key, scale, std::pow(2., modq_bits),
-             ckks_encoder, galois_keys, relin_keys, evaluator, context);
-    
-    auto end = std::chrono::high_resolution_clock::now();
-    
-    // Verify results
-    seal::Plaintext plain;
-    std::vector<double> computed(num_slots);
-    double run_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    
-    decryptor.decrypt(result, plain);
-    seal::pack_decode(computed, plain, ckks_encoder);
-
-    double err = 0.;
-    for (size_t i = 0; i < num_slots; ++i)
-    {
-        err += std::abs(computed[i] - slots[i]);
-        if(i < 8) std::cout << "Original: " << slots[i] 
-                          << " | Converted: " << computed[i] << std::endl;
-    }
-
-    std::cout << "\n=== Conversion Results ===" << std::endl;
-    printf("Average error: %.6f (2^%.1f)\n", err/num_slots, std::log2(err/num_slots));
-    std::cout << "Total conversion time: " << run_time << " ms" << std::endl;
-    std::cout << "==========================\n" << std::endl;
-}
-
-// Update main function to call both tests
 int main()
 {
-    // Test 32-bit version
-    repack_test_32bit(29, 32768);
     
-    // Test 64-bit version
-    repack_test_64bit(57, 32768); 
+    repack_test(29, 32768);
+
 }

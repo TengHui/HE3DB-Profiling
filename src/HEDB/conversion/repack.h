@@ -44,7 +44,7 @@ namespace HEDB
                     seal::CKKSEncoder &encoder, seal::GaloisKeys &galois_keys, seal::RelinKeys &relin_keys,
                     seal::Evaluator &evaluator, seal::SEALContext &context);
     
-    void LWEsToRLWE(seal::Ciphertext &result, std::vector<TLWELvl2> &lwe_ciphers, LTPreKey &eval_key, double scale, double q0, double rescale,
+    void LWEsToRLWE(seal::Ciphertext &result, std::vector<TLWELvl2> &lwe_ciphers, LTPreKey &eval_key, double scale, double q0,
                     seal::CKKSEncoder &encoder, seal::GaloisKeys &galois_keys, seal::RelinKeys &relin_keys,
                     seal::Evaluator &evaluator, seal::SEALContext &context);
 
