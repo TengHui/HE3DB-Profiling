@@ -315,7 +315,7 @@ namespace HEDB
         timings.total_time = std::chrono::duration_cast<Duration>(Clock::now() - total_start).count();
 
         // hth5.Output
-        std::cout << "\n=== LWEsToRLWE Timing Statistics ===\n";
+        std::cout << "\n=== LWEsToRLWE_32bit Timing Statistics ===\n";
         std::cout << "Preprocessing:     " << timings.preprocess_time << " ms (" 
                   << (timings.preprocess_time/timings.total_time*100) << "%)\n";
         std::cout << "Linear Transform:  " << timings.linear_transform_time << " ms ("
@@ -410,7 +410,7 @@ namespace HEDB
         timings.total_time = std::chrono::duration_cast<Duration>(Clock::now() - total_start).count();
 
         // hth5.Output
-        std::cout << "\n=== LWEsToRLWE Timing Statistics ===\n";
+        std::cout << "\n=== LWEsToRLWE_64bit Timing Statistics ===\n";
         std::cout << "Preprocessing:     " << timings.preprocess_time << " ms (" 
                   << (timings.preprocess_time/timings.total_time*100) << "%)\n";
         std::cout << "Linear Transform:  " << timings.linear_transform_time << " ms ("
