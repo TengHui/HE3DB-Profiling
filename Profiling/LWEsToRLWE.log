@@ -1,0 +1,399 @@
+<<<<<<<<<<<<============ Num Slots: 1 ============>>>>>>>>>>>>
+Num slots: 1
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.002666 ms (2.43165e-05%)
+Linear Transform:  3940.81 ms (35.9439%)
+Add b vector:     20.0191 ms (0.182593%)
+Mod Reduction:    7002.93 ms (63.8734%)
+------------------------
+Total Time:       10963.8 ms (100%)
+===================================
+
+Conversion Done
+Initial: 1; Repack: 0.999998
+repack average error = 0.000002 ~ 2^-19.0
+Run time : 11514 ms
+<<<<<<<<<<<<============ Num Slots: 2 ============>>>>>>>>>>>>
+Num slots: 2
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.015094 ms (0.000121762%)
+Linear Transform:  4987.33 ms (40.2324%)
+Add b vector:     29.9521 ms (0.241621%)
+Mod Reduction:    7379 ms (59.5258%)
+------------------------
+Total Time:       12396.3 ms (100%)
+===================================
+
+Conversion Done
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+repack average error = 0.000002 ~ 2^-19.0
+Run time : 12992 ms
+<<<<<<<<<<<<============ Num Slots: 4 ============>>>>>>>>>>>>
+Num slots: 4
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.010069 ms (9.85336e-05%)
+Linear Transform:  3519.6 ms (34.4422%)
+Add b vector:     24.0554 ms (0.235402%)
+Mod Reduction:    6675.18 ms (65.3223%)
+------------------------
+Total Time:       10218.8 ms (100%)
+===================================
+
+Conversion Done
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -1.41472e-09
+repack average error = 0.000001 ~ 2^-19.4
+Run time : 10736 ms
+<<<<<<<<<<<<============ Num Slots: 8 ============>>>>>>>>>>>>
+Num slots: 8
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.013582 ms (0.000122896%)
+Linear Transform:  4347.53 ms (39.3383%)
+Add b vector:     24.109 ms (0.218148%)
+Mod Reduction:    6680 ms (60.4435%)
+------------------------
+Total Time:       11051.6 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: -9.58809e-10
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -2.21032e-09
+Initial: 0; Repack: 7.98617e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-19.7
+Run time : 11569 ms
+<<<<<<<<<<<<============ Num Slots: 16 ============>>>>>>>>>>>>
+Num slots: 16
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.024758 ms (0.000227016%)
+Linear Transform:  4207.96 ms (38.5844%)
+Add b vector:     23.9654 ms (0.219749%)
+Mod Reduction:    6673.9 ms (61.1956%)
+------------------------
+Total Time:       10905.8 ms (100%)
+===================================
+
+Conversion Done
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 7.65785e-09
+Initial: 0; Repack: 4.46714e-10
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 7.12615e-09
+Initial: 0; Repack: -1.73486e-09
+repack average error = 0.000001 ~ 2^-19.7
+Run time : 11422 ms
+<<<<<<<<<<<<============ Num Slots: 32 ============>>>>>>>>>>>>
+Num slots: 32
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.046953 ms (0.000355639%)
+Linear Transform:  6491.15 ms (49.1663%)
+Add b vector:     24.2974 ms (0.184037%)
+Mod Reduction:    6686.94 ms (50.6493%)
+------------------------
+Total Time:       13202.4 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: 2.93276e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -2.28083e-08
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 1.05441e-09
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -6.37126e-10
+repack average error = 0.000001 ~ 2^-19.8
+Run time : 13720 ms
+<<<<<<<<<<<<============ Num Slots: 64 ============>>>>>>>>>>>>
+Num slots: 64
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.260634 ms (0.00185087%)
+Linear Transform:  7378.62 ms (52.3987%)
+Add b vector:     24.309 ms (0.172628%)
+Mod Reduction:    6678.49 ms (47.4268%)
+------------------------
+Total Time:       14081.7 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: 9.03198e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -1.73859e-09
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 4.46693e-08
+Initial: 0; Repack: -1.54086e-09
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-20.1
+Run time : 14599 ms
+<<<<<<<<<<<<============ Num Slots: 128 ============>>>>>>>>>>>>
+Num slots: 128
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.620099 ms (0.00316775%)
+Linear Transform:  12860.9 ms (65.6995%)
+Add b vector:     24.151 ms (0.123374%)
+Mod Reduction:    6689.67 ms (34.1739%)
+------------------------
+Total Time:       19575.4 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: -5.41564e-10
+Initial: 0; Repack: -1.02399e-09
+Initial: 0; Repack: -9.95669e-09
+Initial: 0; Repack: -8.22657e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -2.6899e-09
+repack average error = 0.000001 ~ 2^-19.8
+Run time : 20097 ms
+<<<<<<<<<<<<============ Num Slots: 256 ============>>>>>>>>>>>>
+Num slots: 256
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     0.610514 ms (0.00244444%)
+Linear Transform:  18271 ms (73.1556%)
+Add b vector:     24.1529 ms (0.096706%)
+Mod Reduction:    6679.8 ms (26.7453%)
+------------------------
+Total Time:       24975.6 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: -1.22158e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -3.44344e-09
+repack average error = 0.000001 ~ 2^-19.9
+Run time : 25494 ms
+<<<<<<<<<<<<============ Num Slots: 512 ============>>>>>>>>>>>>
+Num slots: 512
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     1.89804 ms (0.00374568%)
+Linear Transform:  43947.7 ms (86.7283%)
+Add b vector:     24.1062 ms (0.0475722%)
+Mod Reduction:    6699.16 ms (13.2204%)
+------------------------
+Total Time:       50672.8 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: -2.48459e-09
+Initial: 0; Repack: -1.86818e-09
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -1.52871e-08
+Initial: 0; Repack: 2.47803e-10
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-20.0
+Run time : 51191 ms
+<<<<<<<<<<<<============ Num Slots: 1024 ============>>>>>>>>>>>>
+Num slots: 1024
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     2.87166 ms (0.00477588%)
+Linear Transform:  53410.8 ms (88.8277%)
+Add b vector:     24.5345 ms (0.0408034%)
+Mod Reduction:    6690.32 ms (11.1267%)
+------------------------
+Total Time:       60128.5 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: 1.45959e-09
+Initial: 0; Repack: 2.38387e-08
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -1.35434e-08
+Initial: 0; Repack: 1.18155e-09
+Initial: 0; Repack: 5.04552e-09
+repack average error = 0.000001 ~ 2^-19.9
+Run time : 60651 ms
+<<<<<<<<<<<<============ Num Slots: 2048 ============>>>>>>>>>>>>
+Num slots: 2048
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     3.0853 ms (0.00510025%)
+Linear Transform:  53762.3 ms (88.8735%)
+Add b vector:     24.6617 ms (0.0407678%)
+Mod Reduction:    6703.04 ms (11.0807%)
+------------------------
+Total Time:       60493.1 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: -2.86107e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 8.92003e-09
+Initial: 0; Repack: 2.78826e-10
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -9.33356e-09
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-20.0
+Run time : 61011 ms
+<<<<<<<<<<<<============ Num Slots: 4096 ============>>>>>>>>>>>>
+Num slots: 4096
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     5.85407 ms (0.00964262%)
+Linear Transform:  53999.6 ms (88.9462%)
+Add b vector:     25.0266 ms (0.041223%)
+Mod Reduction:    6679.93 ms (11.0029%)
+------------------------
+Total Time:       60710.4 ms (100%)
+===================================
+
+Conversion Done
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 3.66442e-09
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -3.09281e-10
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 1.55215e-09
+Initial: 0; Repack: 4.46036e-09
+repack average error = 0.000001 ~ 2^-20.0
+Run time : 61230 ms
+<<<<<<<<<<<<============ Num Slots: 8192 ============>>>>>>>>>>>>
+Num slots: 8192
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     27.109 ms (0.0445166%)
+Linear Transform:  54154.4 ms (88.9286%)
+Add b vector:     25.0306 ms (0.0411036%)
+Mod Reduction:    6689.93 ms (10.9857%)
+------------------------
+Total Time:       60896.4 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: 2.10359e-08
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: 5.62769e-09
+Initial: 0; Repack: 7.74906e-09
+Initial: 0; Repack: -4.66386e-10
+Initial: 0; Repack: -1.93199e-09
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-20.0
+Run time : 61416 ms
+<<<<<<<<<<<<============ Num Slots: 16384 ============>>>>>>>>>>>>
+Num slots: 16384
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     82.8049 ms (0.137083%)
+Linear Transform:  53608.5 ms (88.7482%)
+Add b vector:     24.527 ms (0.0406042%)
+Mod Reduction:    6689.32 ms (11.0741%)
+------------------------
+Total Time:       60405.1 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: 2.62021e-09
+Initial: 1; Repack: 0.999998
+Initial: 0; Repack: -6.93674e-10
+Initial: 0; Repack: -4.18735e-09
+Initial: 0; Repack: -1.44737e-08
+Initial: 0; Repack: 7.14693e-09
+Initial: 0; Repack: -1.37334e-09
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-20.0
+Run time : 60928 ms
+<<<<<<<<<<<<============ Num Slots: 32768 ============>>>>>>>>>>>>
+Num slots: 32768
+TFHEpp ciphertext generated.
+Parameters generated
+Conversion key generated
+
+=== LWEsToRLWE_32bit Timing Statistics ===
+Preprocessing:     206.841 ms (0.340771%)
+Linear Transform:  53774.7 ms (88.594%)
+Add b vector:     24.634 ms (0.0405846%)
+Mod Reduction:    6691.74 ms (11.0247%)
+------------------------
+Total Time:       60697.9 ms (100%)
+===================================
+
+Conversion Done
+Initial: 0; Repack: -3.54023e-09
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+Initial: 1; Repack: 0.999998
+repack average error = 0.000001 ~ 2^-20.0
+Run time : 61222 ms
